@@ -1,0 +1,386 @@
+<!--
+Name: Rehana Devani
+ID: 1001100807
+NET ID: rxd0807
+
+Web Data Management
+Project 3
+-->
+
+
+
+<!DOCTYPE html>
+<head>
+<style>
+    /* entire container, keeps perspective */
+    .flip-container {
+        perspective: 1000;
+    }
+
+    #table{
+
+        border-spacing: 8px 5px;
+
+    }
+    /* flip the pane when hovered */
+
+
+    .flip-container, .front, .back {
+        width: 80px;
+        height: 20px;
+        border-radius: 4px;
+        padding: 2px;
+
+    }
+
+    /* flip speed goes here */
+    .flipper {
+        transition-delay: 0.2s;
+        transition: 0.5s;
+        transform-style: preserve-3d;
+
+        position: relative;
+
+    }
+
+    table th:nth-child(4) .flip-container,table th:nth-child(4) .front,table th:nth-child(4) .back {
+        width:170px;
+    }
+
+
+
+    table th:nth-child(5) .flip-container,table th:nth-child(5) .front,table th:nth-child(5) .back {
+        width:170px;
+    }
+
+    table th:nth-child(6) .flip-container,table th:nth-child(6) .front,table th:nth-child(6) .back {
+        width:170px;
+    }
+
+    table td:nth-child(4) .flip-container,table td:nth-child(4) .front,table td:nth-child(4) .back {
+        width:170px;
+    }
+
+    table td:nth-child(5) .flip-container,table td:nth-child(5) .front,table td:nth-child(5) .back {
+        width:170px;
+    }
+
+    table td:nth-child(6) .flip-container,table td:nth-child(6) .front,table td:nth-child(6) .back {
+        width:170px;
+    }
+
+    table td:nth-child(1) .flipper{
+        transition-delay: 0.1s;
+    }
+
+    table td:nth-child(2) .flipper{
+        transition-delay: 0.2s;
+    }
+
+    table td:nth-child(3) .flipper{
+        transition-delay: 0.3s;
+    }
+
+    table td:nth-child(4) .flipper{
+        transition-delay: 0.4s;
+    }
+    table td:nth-child(5) .flipper{
+        transition-delay: 0.5s;
+    }
+
+    table td:nth-child(6) .flipper{
+        transition-delay: 0.6s;
+    }
+
+    table td:nth-child(7) .flipper{
+        transition-delay: 0.7s;
+    }
+
+    table td:nth-child(8) .flipper{
+        transition-delay: 0.8s;
+    }
+    table td:nth-child(9) .flipper{
+        transition-delay: 0.9s;
+    }
+
+
+
+    /* hide back of pane during swap */
+    .front, .back {
+        backface-visibility: hidden;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* front pane, placed above back */
+    .front {
+        z-index: 2;
+        /* for firefox 31 */
+        transform: rotateY(0deg);
+        color: white;
+        background-color: lightcoral;
+    }
+
+    /* back, initially hidden pane */
+    .back {
+        transform: rotateY(180deg);
+        background-color: #9B93CA;
+        color: white;
+    }
+
+    .vertical.flip-container {
+        position: relative;
+    }
+
+    .vertical .back {
+        transform: rotateX(180deg);
+    }
+
+    .vertical.flip-container .flipper {
+        transform-origin: 100% 10px; /* half of height */
+    }
+
+     td .vertical.flip-container.hover .flipper, td .vertical.flip-container.flip .flipper {
+        transform: rotateX(-180deg);
+    }
+
+</style>
+  <h2> Data is retrieved from MongoDB! Success! </h2>
+
+</head>
+
+<body>
+<!--<div id="bar_div" ></div>-->
+
+
+
+<!-- code to display a table containing JSON data -->
+
+<table id="table">
+  <tr>
+      <th><div class="flip-container vertical" >
+              <div class="flipper">
+                  <div class="front">_ID</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical" >
+              <div class="flipper">
+                  <div class="front">first_name</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical" >
+              <div class="flipper">
+                  <div class="front">last_name</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical">
+              <div class="flipper">
+                  <div class="front">company_name</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical" >
+              <div class="flipper">
+                  <div class="front">address</div>
+                  <div class="back">address back</div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical" >
+              <div class="flipper">
+                  <div class="front">city</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical">
+              <div class="flipper">
+                  <div class="front">country</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical">
+              <div class="flipper">
+                  <div class="front">state</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+      <th><div class="flip-container vertical">
+              <div class="flipper">
+                  <div class="front">zip</div>
+                  <div class="back"></div>
+              </div>
+          </div>
+      </th>
+
+
+  </tr>
+</table>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+<script>
+  $(document).ready(function(){
+    //count=0;
+    pid=1;
+      txt="";
+   /* localStorage.setItem('i','1');
+    console.log(localStorage.getItem("i"));*/
+
+    var callfetchFromId = function(){
+      fetchFromId();
+    }
+
+    var animatedata = function(){
+
+
+
+        switch(flag)
+        {
+            case 1: $('#table tr:eq('+(modvalue)+')'+' .flip-container.vertical').toggleClass("flip");
+                break;
+            case 2: $('#table tr:eq('+(modvalue+20)+')'+' .flip-container.vertical').toggleClass("flip");
+                break;
+            case 3:  $('#table tr:eq('+(pid)+')'+' .flip-container.vertical').toggleClass("flip");
+                break;
+
+        }
+
+        pid++;
+
+        setTimeout(callfetchFromId, 500);
+
+
+    }
+
+    var fetchFromId = function() {
+
+     /* var id = localStorage.getItem('i');
+
+      var pid = parseInt(id);*/
+      if (pid <= 100) {
+
+      $.ajax({
+        url: '/json/' + pid,
+        type: 'GET',
+        async: true,
+        dataType: "json",
+        success: function (item) {
+
+          console.log("/json/" + pid);
+          console.log("success");
+          txt = '<tr>';
+
+          txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                  item._id +
+                  '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                    item.first_name +
+                    '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                    item.last_name+
+                    '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                     item.company_name+
+                    '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                      item.address+
+                    '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                   item.city+
+                    '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                     item.country+
+                    '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                    item.state+
+                    '</div><div class="back"></div></div></div></td>';
+            txt += '<td><div class="flip-container vertical flip"><div class="flipper"><div class="front">' +
+                     item.zip+
+                    '</div><div class="back"></div></div></div></td>';
+
+            txt+='</tr>';
+         // count++;
+
+            if (pid > 20) {
+                 modvalue = pid%20;
+                //var trs= $("#table tr");
+                if(modvalue!=0)
+                {
+                    $('#table tr:eq('+(modvalue)+')').remove();
+                    $('#table tr:eq('+(modvalue-1)+')').after((txt));
+                    flag=1;
+
+
+                }
+                else
+                {
+                    $('#table tr:eq('+(modvalue+20)+')').remove();
+                    $('#table tr:eq('+(modvalue+19)+')').after((txt));
+
+                    flag=2;
+                }
+
+
+            }
+            else
+            {
+                $('#table').append(txt);
+                flag=3;
+
+            }
+
+
+            setTimeout(animatedata, 500);
+
+
+         },
+        failure: function(item){
+          console.log("failure : "+item);
+          fetchFromId();
+          console.log("calling again for same id : "+pid);
+        }
+      })
+      //console.log(i);
+      /*pid = pid + 1;
+
+
+      localStorage.setItem('i', pid.toString());
+*/
+    }
+    };
+
+
+
+
+    // setTimeout(fetchFromId, 500);
+
+/*    setInterval(fetchFromId, 500);*/
+
+    fetchFromId();
+  });
+
+
+</script>
+
+</body>
+</html>  
+
+
+
